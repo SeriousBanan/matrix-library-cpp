@@ -452,7 +452,7 @@ T SqrMatrix<T>::determinant() const
 	if (this->m_cols == 1)
 		return this->m_data[0][0];
 
-	T res = T(0);
+	T res{ T(0) };
 
 	//Decompose on the first column
 	for (size_t k{ 0 }; k < this->m_rows; ++k)
@@ -484,7 +484,7 @@ template<typename T>
 SqrMatrix<T> SqrMatrix<T>::getInverse() const
 {
 	//Check if determinant equal zero then inverse matrix don't exist.
-	T det = this->determinant();
+	T det{ this->determinant() };
 	if (det == T(0))
 		throw std::logic_error("Inverse matrix don't exist");
 
@@ -515,9 +515,9 @@ SqrMatrix<T> SqrMatrix<T>::getInverse() const
 			//Put minor to matrix of minors
 			//Change sign of elements which have odd sum of indexes
 			if ((minorRow + minorCol) % 2 == 0)
-				minorMatrix[minorRow][minorCol] = minor.determinant();
+				minorMatrix.m_data[minorRow][minorCol] = minor.determinant();
 			else 
-				minorMatrix[minorRow][minorCol] = -minor.determinant();
+				minorMatrix.m_data[minorRow][minorCol] = -minor.determinant();
 		}
 
 	//return Inverse matrix

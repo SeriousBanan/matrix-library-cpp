@@ -50,8 +50,8 @@ public:
 
 	template<typename T>
 	friend Matrix<T> operator*(const Matrix<T> &mat, const T &k);
-	template<typename U>
-	inline friend Matrix<U> operator*(const U &k, const Matrix<U> &mat) { return mat * k; }
+	template<typename T>
+	inline friend Matrix<T> operator*(const T &k, const Matrix<T> &mat) { return mat * k; }
 	inline Matrix<T>& operator*=(const T &k) { *this = *this * k; return *this; }
 	template<typename T>
 	friend Matrix<T> operator*(const Matrix<T> &mat1, const Matrix<T> &mat2);
